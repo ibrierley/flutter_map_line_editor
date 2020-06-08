@@ -2,6 +2,10 @@
 
 A basic line/poly editor that works with flutter_map and dragmarkers.
 
+This relies on my plugin at https://github.com/ibrierley/flutter_map_dragmarker but this should get pulled in, if you add this git repo to your pubspec.yaml.
+
+If you don't want to, you can just use the dragmarker.dart file in the above url, and then the polyeditor.dart file in this repo and import them locally at the top of your files.
+
 See main.dart for example, but here are the basic features:
 
 Tap the map to add a marker, add as many as you want.

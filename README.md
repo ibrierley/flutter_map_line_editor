@@ -8,6 +8,8 @@ Drag the main points to move them.
 
 Drag the intermediate points to create a new point there and drag.
 
+Long press to delete a point.
+
 Set up a new editor instance with
 
     polyEditor = new PolyEditor(

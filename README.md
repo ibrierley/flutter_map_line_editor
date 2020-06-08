@@ -24,6 +24,11 @@ Set up a new editor instance with
       intermediateIcon: Icon(Icons.lens, size: 15, color: Colors.grey),
       callbackRefresh: () => { this.setState(() {})},
     );
+ 
+point is a list of latlong points that are used for the polyline or whatever. It doesn't actually care it's a polyline, it could be something else, but it will put drag points over the top of the latlong points. The list will be edited in place, as it's just a reference as such. So flutter calls build each time, it will use the updated points. 
+pointIcon is the icon to use for your main points to drag.
+intermediateIcon is halfway between the main points. If you drag this icon, it will separate the line its on, into 2 new lines and attach draggable icons to it again.
+callbackRefresh, the screen needs to be updated during a drag, so this will get called each drag frame.
     
 You can add a point programmatically from a tap, in the mapoptions...eg
 ```

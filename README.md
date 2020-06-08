@@ -27,5 +27,5 @@ You can add a point programmatically from a tap, in the mapoptions...eg
      polyEditor.add(testPolyline.points, ll);
    },
  ```               
-
+https://user-images.githubusercontent.com/3901173/84055684-18e02300-a9ad-11ea-8ee6-cbcfbf361391.gif
 

@@ -3,7 +3,6 @@ library polyeditor;
 import 'package:flutter/material.dart';
 import 'package:latlong/latlong.dart';
 import 'package:flutter_map_dragmarker/dragmarker.dart';
-import 'dragmarker.dart';
 
 class PolyEditor {
   final List points;

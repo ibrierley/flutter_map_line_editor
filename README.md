@@ -2,11 +2,13 @@
 
 A basic line/poly editor that works with flutter_map and dragmarkers.
 
-Tap to add a marker, add several.
+See main.dart for example, but here are the basic features:
+
+Tap the map to add a marker, add as many as you want.
 
 Drag the main points to move them.
 
-Drag the intermediate points to create a new point there and drag.
+Drag the intermediate points to create a new point there and drag to where you want.
 
 Long press to delete a point.
 
@@ -18,5 +20,12 @@ Set up a new editor instance with
       intermediateIcon: Icon(Icons.lens, size: 15, color: Colors.grey),
       callbackRefresh: () => { this.setState(() {})},
     );
+    
+You can add a point programmatically from a tap, in the mapoptions...eg
+```
+   onTap: (ll) {
+     polyEditor.add(testPolyline.points, ll);
+   },
+ ```               
 
 

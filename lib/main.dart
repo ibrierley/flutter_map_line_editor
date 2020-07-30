@@ -34,12 +34,12 @@ class _TestAppState extends State<TestApp> {
       intermediateIcon: Icon(Icons.lens, size: 15, color: Colors.grey),
       callbackRefresh: () => { this.setState(() {})},
     );
+    
+    polyLines.add( testPolyline );
   }
 
   @override
   Widget build(BuildContext context) {
-
-    polyLines.add( testPolyline );
 
     return MaterialApp(
       home: Scaffold(

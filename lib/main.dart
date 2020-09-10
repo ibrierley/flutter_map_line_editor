@@ -29,6 +29,7 @@ class _TestAppState extends State<TestApp> {
     super.initState();
 
     polyEditor = new PolyEditor(
+      addClosePathMarker: true,
       points: testPolyline.points,
       pointIcon: Icon(Icons.crop_square, size: 23),
       intermediateIcon: Icon(Icons.lens, size: 15, color: Colors.grey),

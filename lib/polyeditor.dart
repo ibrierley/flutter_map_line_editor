@@ -9,12 +9,14 @@ class PolyEditor {
   final Icon pointIcon;
   final Icon intermediateIcon;
   final Function callbackRefresh;
+  final bool addClosePathMarker;
 
   PolyEditor({
     this.points,
     this.pointIcon,
     this.intermediateIcon,
     this.callbackRefresh,
+    this.addClosePathMarker,
   });
 
   int markerToUpdate;
@@ -66,6 +68,34 @@ class PolyEditor {
       var intermediatePoint = new LatLng(polyPoint.latitude +
           (polyPoint2.latitude - polyPoint.latitude) / 2 ,
           polyPoint.longitude + (polyPoint2.longitude - polyPoint.longitude) / 2);
+
+      dragMarkers.add(
+          DragMarker(
+            point: intermediatePoint,
+            width: 30.0,
+            height: 30.0,
+            builder: (ctx) =>
+                Container(
+                    child: this.intermediateIcon
+                ),
+            onDragStart: (details, point) {
+              this.points.insert(indexClosure + 1, intermediatePoint);
+              markerToUpdate = indexClosure + 1;
+            },
+            onDragUpdate: updateMarker,
+          )
+      );
+    }
+
+    /// Final close marker from end back to beginning we want if its a closed polygon.
+    if(addClosePathMarker && (this.points.length > 0)) {
+      var finalPointIndex = this.points.length - 1;
+
+      var intermediatePoint = new LatLng(this.points[finalPointIndex].latitude +
+          (this.points[0].latitude - this.points[finalPointIndex].latitude) / 2 ,
+          this.points[finalPointIndex].longitude + (this.points[0].longitude - this.points[finalPointIndex].longitude) / 2);
+
+      var indexClosure = this.points.length - 1;
 
       dragMarkers.add(
           DragMarker(

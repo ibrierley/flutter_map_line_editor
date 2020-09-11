@@ -88,7 +88,7 @@ class PolyEditor {
     }
 
     /// Final close marker from end back to beginning we want if its a closed polygon.
-    if(addClosePathMarker && (this.points.length > 0)) {
+    if(addClosePathMarker && (this.points.length > 2)) {
       var finalPointIndex = this.points.length - 1;
 
       var intermediatePoint = new LatLng(this.points[finalPointIndex].latitude +

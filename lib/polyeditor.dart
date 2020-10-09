@@ -6,8 +6,8 @@ import 'package:flutter_map_dragmarker/dragmarker.dart';
 
 class PolyEditor {
   final List points;
-  final Icon pointIcon;
-  final Icon intermediateIcon;
+  final Widget pointIcon;
+  final Widget intermediateIcon;
   final Function callbackRefresh;
   final bool addClosePathMarker;
 

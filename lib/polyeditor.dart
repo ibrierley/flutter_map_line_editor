@@ -7,7 +7,9 @@ import 'package:flutter_map_dragmarker/dragmarker.dart';
 class PolyEditor {
   final List points;
   final Widget pointIcon;
+  final Size pointIconSize;
   final Widget intermediateIcon;
+  final Size intermediateIconSize;
   final Function callbackRefresh;
   final bool addClosePathMarker;
 
@@ -17,6 +19,8 @@ class PolyEditor {
     this.intermediateIcon,
     this.callbackRefresh,
     this.addClosePathMarker,
+    this.pointIconSize = const Size(30, 30),
+    this.intermediateIconSize = const Size(30, 30),
   });
 
   int markerToUpdate;
@@ -44,8 +48,8 @@ class PolyEditor {
       dragMarkers.add(
           DragMarker(
             point: this.points[indexClosure],
-            width: 40.0,
-            height: 40.0,
+            width: pointIconSize.width,
+            height: pointIconSize.height,
             builder: (ctx) =>
                 Container(
                     child: this.pointIcon
@@ -72,8 +76,8 @@ class PolyEditor {
       dragMarkers.add(
           DragMarker(
             point: intermediatePoint,
-            width: 30.0,
-            height: 30.0,
+            width: intermediateIconSize.width,
+            height: intermediateIconSize.height,
             builder: (ctx) =>
                 Container(
                     child: this.intermediateIcon
@@ -100,8 +104,8 @@ class PolyEditor {
       dragMarkers.add(
           DragMarker(
             point: intermediatePoint,
-            width: 30.0,
-            height: 30.0,
+            width: intermediateIconSize.width,
+            height: intermediateIconSize.height,
             builder: (ctx) =>
                 Container(
                     child: this.intermediateIcon

@@ -1,38 +1,39 @@
 library polyeditor;
 
 import 'package:flutter/material.dart';
-import 'package:latlong/latlong.dart';
+import 'package:latlong2/latlong.dart';
 import 'package:flutter_map_dragmarker/dragmarker.dart';
 
 class PolyEditor {
   final List points;
   final Widget pointIcon;
   final Size pointIconSize;
-  final Widget intermediateIcon;
+  final Widget? intermediateIcon;
   final Size intermediateIconSize;
-  final Function callbackRefresh;
+  final Function? callbackRefresh;
   final bool addClosePathMarker;
 
   PolyEditor({
-    this.points,
-    this.pointIcon,
+    required this.points,
+    required this.pointIcon,
     this.intermediateIcon,
     this.callbackRefresh,
-    this.addClosePathMarker,
+    this.addClosePathMarker = false,
     this.pointIconSize = const Size(30, 30),
     this.intermediateIconSize = const Size(30, 30),
   });
 
-  int markerToUpdate;
+  int? markerToUpdate;
 
   void updateMarker(details,point) {
-    this.points[markerToUpdate] = new LatLng(point.latitude, point.longitude);
-    this.callbackRefresh();
+    if(markerToUpdate != null)
+      this.points[markerToUpdate!] = new LatLng(point.latitude, point.longitude);
+    this.callbackRefresh?.call();
   }
 
   List add(List<LatLng> pointsList, point) {
     pointsList.add( point );
-    this.callbackRefresh();
+    this.callbackRefresh?.call();
     return pointsList;
   }
 
@@ -58,7 +59,7 @@ class PolyEditor {
             onDragUpdate: updateMarker,
             onLongPress: (ll) {
               this.remove(indexClosure);
-              this.callbackRefresh();
+              this.callbackRefresh?.call();
             }
           )
       );
@@ -121,6 +122,5 @@ class PolyEditor {
 
     return dragMarkers;
   }
-
 }
 

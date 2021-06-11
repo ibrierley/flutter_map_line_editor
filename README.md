@@ -42,4 +42,6 @@ You can add a point programmatically from a tap, in the mapoptions...eg
 
 ![Demo](https://user-images.githubusercontent.com/3901173/84055684-18e02300-a9ad-11ea-8ee6-cbcfbf361391.gif)
 
+![Demo](https://raw.githubusercontent.com/ibrierley/flutter_map_line_editor/lib/line_editor_poly.gif)
+
 Pull requests welcome!

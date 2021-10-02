@@ -2,6 +2,8 @@
 
 A basic line/poly editor that works with flutter_map and dragmarkers.
 
+Note: As of Flutter_map 0.14 you need to add allowPanningOnScrollingParent: false to your MapOptions (see examples folder)
+
 This relies on my plugin at https://github.com/ibrierley/flutter_map_dragmarker but this should get pulled in, if you add this git repo to your pubspec.yaml.
 
 If you don't want to, you can just use the dragmarker.dart file in the above url, and then the polyeditor.dart file in this repo and import them locally at the top of your files.

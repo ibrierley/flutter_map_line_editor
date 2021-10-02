@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
-import 'package:latlong/latlong.dart';
+import 'package:latlong2/latlong.dart';
 import 'package:flutter_map/plugin_api.dart';
 import 'package:flutter_map_dragmarker/dragmarker.dart';
 import 'polyeditor.dart';
@@ -16,7 +16,7 @@ class TestApp extends StatefulWidget {
 
 class _TestAppState extends State<TestApp> {
 
-  PolyEditor polyEditor;
+  late PolyEditor polyEditor;
 
   List<Polyline> polyLines = [];
   var testPolyline = new Polyline(
@@ -29,7 +29,7 @@ class _TestAppState extends State<TestApp> {
     super.initState();
 
     polyEditor = new PolyEditor(
-      addClosePathMarker: true,
+      addClosePathMarker: false,
       points: testPolyline.points,
       pointIcon: Icon(Icons.crop_square, size: 23),
       intermediateIcon: Icon(Icons.lens, size: 15, color: Colors.grey),
@@ -48,7 +48,8 @@ class _TestAppState extends State<TestApp> {
           child: Container(
             child: FlutterMap(
               options: MapOptions(
-                onTap: (ll) {
+                allowPanningOnScrollingParent: false,
+                onTap: (_,ll) {
                   polyEditor.add(testPolyline.points, ll);
                 },
                 plugins: [

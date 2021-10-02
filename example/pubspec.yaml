@@ -24,13 +24,13 @@ dependencies:
   flutter:
     sdk: flutter
 
-  flutter_map: any
-  latlong2: ^0.8.0
+  flutter_map: ^0.14.0
+  #latlong2: ^0.8.0
 
   flutter_map_dragmarker:
     git:
       url: https://github.com/ibrierley/flutter_map_dragmarker.git
-      ref: nullsafety
+      ref: panfix
 
   flutter_map_line_editor:
     path: ../

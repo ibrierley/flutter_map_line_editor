@@ -32,7 +32,7 @@ dependencies:
   flutter_map_dragmarker:
     git:
       url: https://github.com/ibrierley/flutter_map_dragmarker.git
-      ref: panfix
+      #ref: panfix
 
 
 dev_dependencies:

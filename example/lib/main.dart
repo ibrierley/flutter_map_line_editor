@@ -34,7 +34,7 @@ class _AppState extends State<App> {
           }),
           items: const [
             BottomNavigationBarItem(
-              icon: Icon(Icons.polyline_outlined),
+              icon: Icon(Icons.linear_scale_rounded),
               label: 'Polyline',
             ),
             BottomNavigationBarItem(

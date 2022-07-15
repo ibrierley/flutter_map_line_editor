@@ -1,6 +1,6 @@
 name: flutter_map_line_editor
 description: Line editor class for flutter_map
-version: 2.0.0
+version: 3.0.0
 repository: https://github.com/ibrierley/flutter_map_line_editor
 
 environment:
@@ -10,8 +10,8 @@ dependencies:
   flutter:
     sdk: flutter
 
-  flutter_map: ^1.0.0
-  flutter_map_dragmarker: ^2.0.0
+  flutter_map: ^2.0.0
+  flutter_map_dragmarker: ^3.0.0
   latlong2: ^0.8.0
 
 dev_dependencies:

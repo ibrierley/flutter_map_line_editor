@@ -1,5 +1,7 @@
 # flutter_map_line_editor
 
+[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/F1F8E2YBE)
+
 A basic line and polygon editor that works with [`flutter_map`](https://github.com/fleaflet/flutter_map/) relying on `DragMarker` by [`flutter_map_dragmarker`](https://github.com/ibrierley/flutter_map_dragmarker).
 
 ![Demo](https://user-images.githubusercontent.com/3901173/84055684-18e02300-a9ad-11ea-8ee6-cbcfbf361391.gif)

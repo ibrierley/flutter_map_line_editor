@@ -44,19 +44,16 @@ class _PolylinePageState extends State<PolylinePage> {
             onTap: (_, ll) {
               polyEditor.add(testPolyline.points, ll);
             },
-            plugins: [
-              DragMarkerPlugin(),
-            ],
             center: LatLng(45.5231, -122.6765),
             zoom: 6.4,
           ),
-          layers: [
-            TileLayerOptions(
+          children: [
+            TileLayerWidget(options: TileLayerOptions(
                 urlTemplate:
                     'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
-                subdomains: ['a', 'b', 'c']),
-            PolylineLayerOptions(polylines: polyLines),
-            DragMarkerPluginOptions(markers: polyEditor.edit()),
+                subdomains: ['a', 'b', 'c'])),
+            PolylineLayerWidget(options: PolylineLayerOptions(polylines: polyLines)),
+            DragMarkerPlugin(markers: polyEditor.edit()),
           ],
         ),
       ),

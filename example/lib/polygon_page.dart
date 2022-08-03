@@ -44,19 +44,16 @@ class _PolygonPageState extends State<PolygonPage> {
             onTap: (_, ll) {
               polyEditor.add(testPolygon.points, ll);
             },
-            plugins: [
-              DragMarkerPlugin(),
-            ],
             center: LatLng(45.5231, -122.6765),
             zoom: 6.4,
           ),
-          layers: [
-            TileLayerOptions(
+          children: [
+            TileLayerWidget(options: TileLayerOptions(
                 urlTemplate:
                     'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
-                subdomains: ['a', 'b', 'c']),
-            PolygonLayerOptions(polygons: polygons),
-            DragMarkerPluginOptions(markers: polyEditor.edit()),
+                subdomains: ['a', 'b', 'c'])),
+            PolygonLayerWidget(options: PolygonLayerOptions(polygons: polygons)),
+            DragMarkerPlugin(markers: polyEditor.edit()),
           ],
         ),
       ),

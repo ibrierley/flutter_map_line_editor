@@ -40,23 +40,20 @@ class _PolylinePageState extends State<PolylinePage> {
       body: Center(
         child: FlutterMap(
           options: MapOptions(
-            allowPanningOnScrollingParent: false,
+            absorbPanEventsOnScrollables: false,
             onTap: (_, ll) {
               polyEditor.add(testPolyline.points, ll);
             },
-            plugins: [
-              DragMarkerPlugin(),
-            ],
             center: LatLng(45.5231, -122.6765),
             zoom: 6.4,
           ),
-          layers: [
-            TileLayerOptions(
+          children: [
+            TileLayer(
                 urlTemplate:
                     'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
                 subdomains: ['a', 'b', 'c']),
-            PolylineLayerOptions(polylines: polyLines),
-            DragMarkerPluginOptions(markers: polyEditor.edit()),
+            PolylineLayer(polylines: polyLines),
+            DragMarkers(markers: polyEditor.edit()),
           ],
         ),
       ),

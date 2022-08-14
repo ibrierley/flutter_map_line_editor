@@ -16,7 +16,7 @@ class _PolygonPageState extends State<PolygonPage> {
   late PolyEditor polyEditor;
 
   List<Polygon> polygons = [];
-  var testPolygon = Polygon(color: Colors.deepOrange, points: []);
+  var testPolygon = Polygon(color: Colors.deepOrange, isFilled: true, points: []);
 
   @override
   void initState() {
@@ -40,23 +40,21 @@ class _PolygonPageState extends State<PolygonPage> {
       body: Center(
         child: FlutterMap(
           options: MapOptions(
-            allowPanningOnScrollingParent: false,
+            //allowPanningOnScrollingParent: false,
+            absorbPanEventsOnScrollables: false,
             onTap: (_, ll) {
               polyEditor.add(testPolygon.points, ll);
             },
-            plugins: [
-              DragMarkerPlugin(),
-            ],
             center: LatLng(45.5231, -122.6765),
             zoom: 6.4,
           ),
-          layers: [
-            TileLayerOptions(
+          children: [
+            TileLayer(
                 urlTemplate:
                     'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
                 subdomains: ['a', 'b', 'c']),
-            PolygonLayerOptions(polygons: polygons),
-            DragMarkerPluginOptions(markers: polyEditor.edit()),
+            PolygonLayer(polygons: polygons),
+            DragMarkers(markers: polyEditor.edit()),
           ],
         ),
       ),

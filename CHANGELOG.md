@@ -1,3 +1,6 @@
+## 4.0.0
+- `flutter_map` releasing for v3, released v3 line editor in error
+
 ## 3.0.0+beta.1
 - `flutter_map` preparing for ^3.0.0-beta.1
 

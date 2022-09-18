@@ -1,3 +1,6 @@
+##4.0.2
+-  Tighten latlng2 dep
+
 ## 4.0.1
 -  Including separate dragmarker script, as they are a bit incompatible atm.
 

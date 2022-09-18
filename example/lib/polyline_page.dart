@@ -27,7 +27,7 @@ class _PolylinePageState extends State<PolylinePage> {
       points: testPolyline.points,
       pointIcon: const Icon(Icons.crop_square, size: 23),
       intermediateIcon: const Icon(Icons.lens, size: 15, color: Colors.grey),
-      callbackRefresh: () => {setState(() {})},
+      callbackRefresh: () {print("polyedit setstate"); setState(() {} ); },
     );
 
     polyLines.add(testPolyline);
@@ -45,7 +45,7 @@ class _PolylinePageState extends State<PolylinePage> {
               polyEditor.add(testPolyline.points, ll);
             },
             center: LatLng(45.5231, -122.6765),
-            zoom: 6.4,
+            zoom: 3.4,
           ),
           children: [
             TileLayer(
@@ -53,7 +53,8 @@ class _PolylinePageState extends State<PolylinePage> {
                     'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
                 subdomains: ['a', 'b', 'c']),
             PolylineLayer(polylines: polyLines),
-            DragMarkers(markers: polyEditor.edit()),
+            DragMarkers(markers:  polyEditor.edit()),
+
           ],
         ),
       ),

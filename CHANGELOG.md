@@ -1,3 +1,6 @@
+## 4.0.1
+-  Including separate dragmarker script, as they are a bit incompatible atm.
+
 ## 4.0.0
 - `flutter_map` releasing for v3, released v3 line editor in error
 

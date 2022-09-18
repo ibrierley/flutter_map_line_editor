@@ -10,7 +10,6 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_map: ^3.0.0
-  flutter_map_dragmarker: ^4.0.0
   flutter_map_line_editor:
     path: ../
   latlong2: ">=0.8.0"

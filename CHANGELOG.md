@@ -1,3 +1,6 @@
+## 4.0.2
+- Update to allow latlng2 0.8.1 
+
 ## 4.0.1
 -  Including separate dragmarker script, as they are a bit incompatible atm.
 

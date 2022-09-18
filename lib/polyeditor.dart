@@ -2,7 +2,7 @@ library polyeditor;
 
 import 'package:flutter/widgets.dart';
 import 'package:latlong2/latlong.dart';
-import 'package:flutter_map_dragmarker/dragmarker.dart';
+import 'dragmarker.dart';
 
 class PolyEditor {
   final List points;
@@ -48,7 +48,7 @@ class PolyEditor {
     for (var c = 0; c < points.length; c++) {
       var indexClosure = c;
       dragMarkers.add(DragMarker(
-          point: points[indexClosure],
+          point: points[c],
           width: pointIconSize.width,
           height: pointIconSize.height,
           builder: (ctx) => Container(child: pointIcon),
@@ -61,6 +61,7 @@ class PolyEditor {
             callbackRefresh?.call();
           }));
     }
+
 
     for (var c = 0; c < points.length - 1; c++) {
       var polyPoint = points[c];

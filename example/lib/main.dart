@@ -1,3 +1,4 @@
+import 'package:example/list_page.dart';
 import 'package:example/polygon_page.dart';
 import 'package:example/polyline_page.dart';
 import 'package:flutter/material.dart';
@@ -25,6 +26,7 @@ class _AppState extends State<App> {
           children: const [
             PolylinePage(),
             PolygonPage(),
+            ListPage(),
           ],
         ),
         bottomNavigationBar: BottomNavigationBar(
@@ -40,7 +42,11 @@ class _AppState extends State<App> {
             BottomNavigationBarItem(
               icon: Icon(Icons.dashboard_outlined),
               label: 'Polygon',
-            )
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.list),
+              label: 'List',
+            ),
           ],
         ),
       ),

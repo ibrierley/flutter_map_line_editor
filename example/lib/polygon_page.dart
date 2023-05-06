@@ -40,8 +40,6 @@ class _PolygonPageState extends State<PolygonPage> {
       body: Center(
         child: FlutterMap(
           options: MapOptions(
-            //allowPanningOnScrollingParent: false,
-            absorbPanEventsOnScrollables: false,
             onTap: (_, ll) {
               polyEditor.add(testPolygon.points, ll);
             },

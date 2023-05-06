@@ -40,7 +40,6 @@ class _PolylinePageState extends State<PolylinePage> {
       body: Center(
         child: FlutterMap(
           options: MapOptions(
-            absorbPanEventsOnScrollables: false,
             onTap: (_, ll) {
               polyEditor.add(testPolyline.points, ll);
             },

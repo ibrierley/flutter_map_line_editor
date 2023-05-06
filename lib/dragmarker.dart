@@ -89,9 +89,12 @@ class _DragMarkerWidgetState extends State<DragMarkerWidget> {
         : marker.builder!(context);
 
     return GestureDetector(
-      onPanStart: marker.useLongPress ? null : onPanStart,
-      onPanUpdate: marker.useLongPress ? null : onPanUpdate,
-      onPanEnd: marker.useLongPress ? null : onPanEnd,
+      onHorizontalDragStart: marker.useLongPress ? null : onPanStart,
+      onHorizontalDragUpdate: marker.useLongPress ? null : onPanUpdate,
+      onHorizontalDragEnd: marker.useLongPress ? null : onPanEnd,
+      onVerticalDragStart: marker.useLongPress ? null : onPanStart,
+      onVerticalDragUpdate: marker.useLongPress ? null : onPanUpdate,
+      onVerticalDragEnd: marker.useLongPress ? null : onPanEnd,
       onLongPressStart: marker.useLongPress ? onLongPanStart : null,
       onLongPressMoveUpdate: marker.useLongPress ? onLongPanUpdate : null,
       onLongPressEnd: marker.useLongPress ? onLongPanEnd : null,

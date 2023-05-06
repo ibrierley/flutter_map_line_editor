@@ -8,8 +8,6 @@ A basic line and polygon editor that works with [`flutter_map`](https://github.c
 
 ![Demo](./line_editor_poly.gif)
 
-**Note**: As of Flutter_map 0.14 you need to add `allowPanningOnScrollingParent: false` to your `MapOptions`
-
 See the `example` directory for basic usage, here are the most important features:
 
 - Tap the map to add a marker, add as many as you want.

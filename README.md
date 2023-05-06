@@ -20,7 +20,7 @@ See the `example` directory for basic usage, here are the most important feature
 Set up a new editor instance with:
 
 ```dart
-polyEditor = new PolyEditor(
+var polyEditor = PolyEditor(
   points: testPolyline.points,
   pointIcon: Icon(Icons.crop_square, size: 23),
   intermediateIcon: Icon(Icons.lens, size: 15, color: Colors.grey),

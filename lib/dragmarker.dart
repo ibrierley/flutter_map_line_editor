@@ -6,7 +6,7 @@ import 'package:flutter_map/plugin_api.dart';
 class DragMarkers extends StatefulWidget {
   final List<DragMarker> markers;
 
-  DragMarkers({Key? key, this.markers = const []});
+  const DragMarkers({super.key, this.markers = const []});
 
   @override
   State<DragMarkers> createState() => _DragMarkersState();

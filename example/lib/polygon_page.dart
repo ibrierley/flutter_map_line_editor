@@ -16,7 +16,8 @@ class _PolygonPageState extends State<PolygonPage> {
   late PolyEditor polyEditor;
 
   List<Polygon> polygons = [];
-  var testPolygon = Polygon(color: Colors.deepOrange, isFilled: true, points: []);
+  var testPolygon =
+      Polygon(color: Colors.deepOrange, isFilled: true, points: []);
 
   @override
   void initState() {

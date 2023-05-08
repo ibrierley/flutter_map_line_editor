@@ -27,7 +27,10 @@ class _PolylinePageState extends State<PolylinePage> {
       points: testPolyline.points,
       pointIcon: const Icon(Icons.crop_square, size: 23),
       intermediateIcon: const Icon(Icons.lens, size: 15, color: Colors.grey),
-      callbackRefresh: () {debugPrint("polyedit setstate"); setState(() {} ); },
+      callbackRefresh: () {
+        debugPrint("polyedit setstate");
+        setState(() {});
+      },
     );
 
     polyLines.add(testPolyline);
@@ -52,8 +55,7 @@ class _PolylinePageState extends State<PolylinePage> {
                     'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
                 subdomains: const ['a', 'b', 'c']),
             PolylineLayer(polylines: polyLines),
-            DragMarkers(markers:  polyEditor.edit()),
-
+            DragMarkers(markers: polyEditor.edit()),
           ],
         ),
       ),

@@ -62,7 +62,6 @@ class PolyEditor {
           }));
     }
 
-
     for (var c = 0; c < points.length - 1; c++) {
       var polyPoint = points[c];
       var polyPoint2 = points[c + 1];

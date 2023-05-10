@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/widgets.dart';
 import 'package:flutter_map_dragmarker/dragmarker.dart';
 import 'package:latlong2/latlong.dart';
@@ -21,22 +23,38 @@ class PolyEditor {
     this.intermediateIconSize = const Size(30, 30),
   });
 
-  int? markerToUpdate;
+  late final List<Key> _markerKeys = List.generate(
+    points.length,
+    (_) => GlobalKey<DragMarkerWidgetState>(),
+  );
+  late final List<Key> _intermediateMarkerKeys = List.generate(
+    max(points.length - 1, 0),
+    (_) => GlobalKey<DragMarkerWidgetState>(),
+  );
+  int? _markerToUpdate;
 
   void updateMarker(details, point) {
-    if (markerToUpdate != null) {
-      points[markerToUpdate!] = LatLng(point.latitude, point.longitude);
+    if (_markerToUpdate != null) {
+      points[_markerToUpdate!] = LatLng(point.latitude, point.longitude);
     }
     callbackRefresh?.call();
   }
 
   List add(List<LatLng> pointsList, point) {
     pointsList.add(point);
+    _markerKeys.add(GlobalKey<DragMarkerWidgetState>());
+    if (_markerKeys.length > 1) {
+      _intermediateMarkerKeys.add(GlobalKey<DragMarkerWidgetState>());
+    }
     callbackRefresh?.call();
     return pointsList;
   }
 
   LatLng remove(int index) {
+    _markerKeys.removeAt(index);
+    if (_markerKeys.isNotEmpty) {
+      _intermediateMarkerKeys.removeAt(index - 1);
+    }
     return points.removeAt(index);
   }
 
@@ -44,40 +62,51 @@ class PolyEditor {
     List<DragMarker> dragMarkers = [];
 
     for (var c = 0; c < points.length; c++) {
-      var indexClosure = c;
+      final indexClosure = c;
       dragMarkers.add(DragMarker(
-          point: points[c],
-          width: pointIconSize.width,
-          height: pointIconSize.height,
-          builder: (ctx) => Container(child: pointIcon),
-          onDragStart: (_, __) {
-            markerToUpdate = indexClosure;
-          },
-          onDragUpdate: updateMarker,
-          onLongPress: (ll) {
-            remove(indexClosure);
-            callbackRefresh?.call();
-          }));
+        key: _markerKeys[c],
+        point: points[c],
+        width: pointIconSize.width,
+        height: pointIconSize.height,
+        builder: (ctx) => Container(child: pointIcon),
+        onDragStart: (_, __) {
+          _markerToUpdate = indexClosure;
+        },
+        onDragUpdate: updateMarker,
+        onLongPress: (ll) {
+          remove(indexClosure);
+          callbackRefresh?.call();
+        },
+      ));
     }
 
     for (var c = 0; c < points.length - 1; c++) {
-      var polyPoint = points[c];
-      var polyPoint2 = points[c + 1];
+      final polyPoint = points[c];
+      final polyPoint2 = points[c + 1];
 
-      var indexClosure = c;
-      var intermediatePoint = LatLng(
+      final indexClosure = c;
+      final intermediatePoint = LatLng(
           polyPoint.latitude + (polyPoint2.latitude - polyPoint.latitude) / 2,
           polyPoint.longitude +
               (polyPoint2.longitude - polyPoint.longitude) / 2);
 
       dragMarkers.add(DragMarker(
+        key: _intermediateMarkerKeys[c],
         point: intermediatePoint,
         width: intermediateIconSize.width,
         height: intermediateIconSize.height,
         builder: (ctx) => Container(child: intermediateIcon),
         onDragStart: (details, point) {
           points.insert(indexClosure + 1, intermediatePoint);
-          markerToUpdate = indexClosure + 1;
+          _markerKeys.insert(
+            indexClosure + 1,
+            GlobalKey<DragMarkerWidgetState>(),
+          );
+          _intermediateMarkerKeys.insert(
+            indexClosure,
+            GlobalKey<DragMarkerWidgetState>(),
+          );
+          _markerToUpdate = indexClosure + 1;
         },
         onDragUpdate: updateMarker,
       ));
@@ -85,16 +114,17 @@ class PolyEditor {
 
     /// Final close marker from end back to beginning we want if its a closed polygon.
     if (addClosePathMarker && (points.length > 2)) {
-      var finalPointIndex = points.length - 1;
+      final finalPointIndex = points.length - 1;
 
-      var intermediatePoint = LatLng(
+      final intermediatePoint = LatLng(
           points[finalPointIndex].latitude +
               (points[0].latitude - points[finalPointIndex].latitude) / 2,
           points[finalPointIndex].longitude +
               (points[0].longitude - points[finalPointIndex].longitude) / 2);
 
-      var indexClosure = points.length - 1;
+      final indexClosure = points.length - 1;
 
+      // TODO add key for this additional DragMarker
       dragMarkers.add(DragMarker(
         point: intermediatePoint,
         width: intermediateIconSize.width,
@@ -102,7 +132,7 @@ class PolyEditor {
         builder: (ctx) => Container(child: intermediateIcon),
         onDragStart: (details, point) {
           points.insert(indexClosure + 1, intermediatePoint);
-          markerToUpdate = indexClosure + 1;
+          _markerToUpdate = indexClosure + 1;
         },
         onDragUpdate: updateMarker,
       ));

@@ -20,8 +20,6 @@ class _PolylinePageState extends State<PolylinePage> {
 
   @override
   void initState() {
-    super.initState();
-
     polyEditor = PolyEditor(
       addClosePathMarker: false,
       points: testPolyline.points,
@@ -32,8 +30,8 @@ class _PolylinePageState extends State<PolylinePage> {
         setState(() {});
       },
     );
-
     polyLines.add(testPolyline);
+    super.initState();
   }
 
   @override
@@ -62,6 +60,7 @@ class _PolylinePageState extends State<PolylinePage> {
         child: const Icon(Icons.replay),
         onPressed: () {
           setState(() {
+            // TODO this doesn't clears the keys
             testPolyline.points.clear();
           });
         },

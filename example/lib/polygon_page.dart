@@ -60,6 +60,7 @@ class _PolygonPageState extends State<PolygonPage> {
         child: const Icon(Icons.replay),
         onPressed: () {
           setState(() {
+            // TODO this doesn't clears the keys
             testPolygon.points.clear();
           });
         },

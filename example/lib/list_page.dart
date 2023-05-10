@@ -84,6 +84,7 @@ class _ListPageState extends State<ListPage> {
         child: const Icon(Icons.replay),
         onPressed: () {
           setState(() {
+            // TODO this doesn't clears the keys
             testPolyline.points.clear();
           });
         },

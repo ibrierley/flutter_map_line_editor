@@ -1,3 +1,6 @@
+##4.0.3
+-  Making compatible with flutter_map ^4.0.0
+
 ##4.0.2
 -  Tighten latlng2 dep
 

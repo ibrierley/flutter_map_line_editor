@@ -1,6 +1,6 @@
 name: flutter_map_line_editor
 description: Line editor class for flutter_map
-version: 4.0.2
+version: 4.0.3
 repository: https://github.com/ibrierley/flutter_map_line_editor
 
 environment:

@@ -1,7 +1,7 @@
 name: example
 description: Example app showcasing usage of flutter_map_line_editor.
 publish_to: 'none'
-version: 4.0.2
+version: 4.0.3
 
 environment:
   sdk: ">=2.18.0 <3.0.0"

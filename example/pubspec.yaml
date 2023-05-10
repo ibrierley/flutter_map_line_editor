@@ -4,12 +4,13 @@ publish_to: 'none'
 version: 4.0.2
 
 environment:
-  sdk: ">=2.12.0 <3.0.0"
+  sdk: ">=2.18.0 <3.0.0"
+  flutter: ">=3.3.0"
 
 dependencies:
   flutter:
     sdk: flutter
-  flutter_map: ^3.0.0
+  flutter_map: ^4.0.0
   flutter_map_line_editor:
     path: ../
   latlong2: ">=0.8.0 <0.9.0"

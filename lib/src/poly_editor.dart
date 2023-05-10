@@ -1,6 +1,6 @@
 import 'package:flutter/widgets.dart';
+import 'package:flutter_map_dragmarker/dragmarker.dart';
 import 'package:latlong2/latlong.dart';
-import '../dragmarker.dart' as test;
 
 class PolyEditor {
   final List points;
@@ -40,12 +40,12 @@ class PolyEditor {
     return points.removeAt(index);
   }
 
-  List<test.DragMarker> edit() {
-    List<test.DragMarker> dragMarkers = [];
+  List<DragMarker> edit() {
+    List<DragMarker> dragMarkers = [];
 
     for (var c = 0; c < points.length; c++) {
       var indexClosure = c;
-      dragMarkers.add(test.DragMarker(
+      dragMarkers.add(DragMarker(
           point: points[c],
           width: pointIconSize.width,
           height: pointIconSize.height,
@@ -70,7 +70,7 @@ class PolyEditor {
           polyPoint.longitude +
               (polyPoint2.longitude - polyPoint.longitude) / 2);
 
-      dragMarkers.add(test.DragMarker(
+      dragMarkers.add(DragMarker(
         point: intermediatePoint,
         width: intermediateIconSize.width,
         height: intermediateIconSize.height,
@@ -95,7 +95,7 @@ class PolyEditor {
 
       var indexClosure = points.length - 1;
 
-      dragMarkers.add(test.DragMarker(
+      dragMarkers.add(DragMarker(
         point: intermediatePoint,
         width: intermediateIconSize.width,
         height: intermediateIconSize.height,

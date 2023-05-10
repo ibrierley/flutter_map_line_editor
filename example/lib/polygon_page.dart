@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
-import 'package:latlong2/latlong.dart';
 import 'package:flutter_map/plugin_api.dart';
 import 'package:flutter_map_line_editor/dragmarker.dart';
 import 'package:flutter_map_line_editor/polyeditor.dart';
+import 'package:latlong2/latlong.dart';
 
 class PolygonPage extends StatefulWidget {
   const PolygonPage({Key? key}) : super(key: key);
@@ -49,9 +49,8 @@ class _PolygonPageState extends State<PolygonPage> {
           ),
           children: [
             TileLayer(
-                urlTemplate:
-                    'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
-                subdomains: const ['a', 'b', 'c']),
+              urlTemplate: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+            ),
             PolygonLayer(polygons: polygons),
             DragMarkers(markers: polyEditor.edit()),
           ],

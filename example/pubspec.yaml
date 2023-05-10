@@ -11,9 +11,14 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_map: ^4.0.0
+  # TODO use pub.dev version once released
+  flutter_map_dragmarker:
+    git:
+      url: https://github.com/josxha/flutter_map_dragmarker.git
+      ref: ebe5d297f84efe27cb2557874071d7140f2cf754
+  latlong2: ">=0.8.0 <0.9.0"
   flutter_map_line_editor:
     path: ../
-  latlong2: ">=0.8.0 <0.9.0"
 
 dev_dependencies:
   flutter_lints: ">=1.0.4"

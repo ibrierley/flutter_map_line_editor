@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
-import 'package:latlong2/latlong.dart';
 import 'package:flutter_map/plugin_api.dart';
-import 'package:flutter_map_line_editor/polyeditor.dart';
 import 'package:flutter_map_line_editor/dragmarker.dart';
+import 'package:flutter_map_line_editor/polyeditor.dart';
+import 'package:latlong2/latlong.dart';
 
 class PolylinePage extends StatefulWidget {
   const PolylinePage({Key? key}) : super(key: key);
@@ -51,9 +51,8 @@ class _PolylinePageState extends State<PolylinePage> {
           ),
           children: [
             TileLayer(
-                urlTemplate:
-                    'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
-                subdomains: const ['a', 'b', 'c']),
+              urlTemplate: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
+            ),
             PolylineLayer(polylines: polyLines),
             DragMarkers(markers: polyEditor.edit()),
           ],

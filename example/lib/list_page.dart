@@ -58,9 +58,9 @@ class _ListPageState extends State<ListPage> {
                     ),
                     children: [
                       TileLayer(
-                          urlTemplate:
-                              'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
-                          subdomains: const ['a', 'b', 'c']),
+                        urlTemplate:
+                            'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
+                      ),
                       PolylineLayer(polylines: polyLines),
                       DragMarkers(markers: polyEditor.edit()),
                     ],

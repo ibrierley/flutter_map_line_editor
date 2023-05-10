@@ -49,7 +49,7 @@ class _PolygonPageState extends State<PolygonPage> {
           ),
           children: [
             TileLayer(
-              urlTemplate: 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+              urlTemplate: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
             ),
             PolygonLayer(polygons: polygons),
             DragMarkers(markers: polyEditor.edit()),

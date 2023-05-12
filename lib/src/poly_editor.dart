@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:flutter/widgets.dart';
 import 'package:flutter_map_dragmarker/dragmarker.dart';
 import 'package:latlong2/latlong.dart';
@@ -23,14 +21,6 @@ class PolyEditor {
     this.intermediateIconSize = const Size(30, 30),
   });
 
-  late final List<Key> _markerKeys = List.generate(
-    points.length,
-    (_) => GlobalKey<DragMarkerWidgetState>(),
-  );
-  late final List<Key> _intermediateMarkerKeys = List.generate(
-    max(points.length - 1, 0),
-    (_) => GlobalKey<DragMarkerWidgetState>(),
-  );
   int? _markerToUpdate;
 
   void updateMarker(details, point) {
@@ -42,19 +32,11 @@ class PolyEditor {
 
   List add(List<LatLng> pointsList, point) {
     pointsList.add(point);
-    _markerKeys.add(GlobalKey<DragMarkerWidgetState>());
-    if (_markerKeys.length > 1) {
-      _intermediateMarkerKeys.add(GlobalKey<DragMarkerWidgetState>());
-    }
     callbackRefresh?.call();
     return pointsList;
   }
 
   LatLng remove(int index) {
-    _markerKeys.removeAt(index);
-    if (_markerKeys.isNotEmpty) {
-      _intermediateMarkerKeys.removeAt(index - 1);
-    }
     return points.removeAt(index);
   }
 
@@ -64,7 +46,6 @@ class PolyEditor {
     for (var c = 0; c < points.length; c++) {
       final indexClosure = c;
       dragMarkers.add(DragMarker(
-        key: _markerKeys[c],
         point: points[c],
         width: pointIconSize.width,
         height: pointIconSize.height,
@@ -91,21 +72,12 @@ class PolyEditor {
               (polyPoint2.longitude - polyPoint.longitude) / 2);
 
       dragMarkers.add(DragMarker(
-        key: _intermediateMarkerKeys[c],
         point: intermediatePoint,
         width: intermediateIconSize.width,
         height: intermediateIconSize.height,
         builder: (_, __, ___) => intermediateIcon ?? const SizedBox.shrink(),
         onDragStart: (details, point) {
           points.insert(indexClosure + 1, intermediatePoint);
-          _markerKeys.insert(
-            indexClosure + 1,
-            GlobalKey<DragMarkerWidgetState>(),
-          );
-          _intermediateMarkerKeys.insert(
-            indexClosure,
-            GlobalKey<DragMarkerWidgetState>(),
-          );
           _markerToUpdate = indexClosure + 1;
         },
         onDragUpdate: updateMarker,
@@ -124,7 +96,6 @@ class PolyEditor {
 
       final indexClosure = points.length - 1;
 
-      // TODO add key for this additional DragMarker
       dragMarkers.add(DragMarker(
         point: intermediatePoint,
         width: intermediateIconSize.width,

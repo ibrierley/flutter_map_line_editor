@@ -15,8 +15,8 @@ class PolylinePage extends StatefulWidget {
 class _PolylinePageState extends State<PolylinePage> {
   late PolyEditor polyEditor;
 
-  List<Polyline> polyLines = [];
-  var testPolyline = Polyline(color: Colors.deepOrange, points: []);
+  final polyLines = <Polyline>[];
+  final testPolyline = Polyline(color: Colors.deepOrange, points: []);
 
   @override
   void initState() {

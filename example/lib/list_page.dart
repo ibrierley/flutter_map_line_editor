@@ -15,8 +15,8 @@ class ListPage extends StatefulWidget {
 class _ListPageState extends State<ListPage> {
   late PolyEditor polyEditor;
 
-  List<Polyline> polyLines = [];
-  var testPolyline = Polyline(color: Colors.deepOrange, points: []);
+  final polyLines = <Polyline>[];
+  final testPolyline = Polyline(color: Colors.deepOrange, points: []);
 
   @override
   void initState() {
@@ -84,7 +84,6 @@ class _ListPageState extends State<ListPage> {
         child: const Icon(Icons.replay),
         onPressed: () {
           setState(() {
-            // TODO this doesn't clears the keys
             testPolyline.points.clear();
           });
         },

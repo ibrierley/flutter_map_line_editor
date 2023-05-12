@@ -15,9 +15,12 @@ class PolygonPage extends StatefulWidget {
 class _PolygonPageState extends State<PolygonPage> {
   late PolyEditor polyEditor;
 
-  List<Polygon> polygons = [];
-  var testPolygon =
-      Polygon(color: Colors.deepOrange, isFilled: true, points: []);
+  final polygons = <Polygon>[];
+  final testPolygon = Polygon(
+    color: Colors.deepOrange,
+    isFilled: true,
+    points: [],
+  );
 
   @override
   void initState() {

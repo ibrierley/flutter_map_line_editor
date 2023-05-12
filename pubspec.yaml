@@ -10,7 +10,6 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  flutter_map: ">=3.0.0 <5.0.0"
   latlong2: ">=0.8.0 <0.9.0"
   # TODO use pub.dev version once released
   flutter_map_dragmarker:

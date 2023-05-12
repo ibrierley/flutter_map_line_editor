@@ -68,7 +68,7 @@ class PolyEditor {
         point: points[c],
         width: pointIconSize.width,
         height: pointIconSize.height,
-        builder: (ctx) => Container(child: pointIcon),
+        builder: (_, __, ___) => pointIcon,
         onDragStart: (_, __) {
           _markerToUpdate = indexClosure;
         },
@@ -95,7 +95,7 @@ class PolyEditor {
         point: intermediatePoint,
         width: intermediateIconSize.width,
         height: intermediateIconSize.height,
-        builder: (ctx) => Container(child: intermediateIcon),
+        builder: (_, __, ___) => intermediateIcon ?? const SizedBox.shrink(),
         onDragStart: (details, point) {
           points.insert(indexClosure + 1, intermediatePoint);
           _markerKeys.insert(
@@ -129,7 +129,7 @@ class PolyEditor {
         point: intermediatePoint,
         width: intermediateIconSize.width,
         height: intermediateIconSize.height,
-        builder: (ctx) => Container(child: intermediateIcon),
+        builder: (_, __, ___) => intermediateIcon ?? const SizedBox.shrink(),
         onDragStart: (details, point) {
           points.insert(indexClosure + 1, intermediatePoint);
           _markerToUpdate = indexClosure + 1;

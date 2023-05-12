@@ -15,7 +15,7 @@ dependencies:
   flutter_map_dragmarker:
     git:
       url: https://github.com/josxha/flutter_map_dragmarker.git
-      ref: ebe5d297f84efe27cb2557874071d7140f2cf754
+      ref: master
   latlong2: ">=0.8.0 <0.9.0"
   flutter_map_line_editor:
     path: ../

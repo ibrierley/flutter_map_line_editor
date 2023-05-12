@@ -38,23 +38,21 @@ class _PolygonPageState extends State<PolygonPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text('Polygon example')),
-      body: Center(
-        child: FlutterMap(
-          options: MapOptions(
-            onTap: (_, ll) {
-              polyEditor.add(testPolygon.points, ll);
-            },
-            center: LatLng(45.5231, -122.6765),
-            zoom: 6.4,
-          ),
-          children: [
-            TileLayer(
-              urlTemplate: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
-            ),
-            PolygonLayer(polygons: polygons),
-            DragMarkers(markers: polyEditor.edit()),
-          ],
+      body: FlutterMap(
+        options: MapOptions(
+          onTap: (_, ll) {
+            polyEditor.add(testPolygon.points, ll);
+          },
+          center: LatLng(45.5231, -122.6765),
+          zoom: 6.4,
         ),
+        children: [
+          TileLayer(
+            urlTemplate: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
+          ),
+          PolygonLayer(polygons: polygons),
+          DragMarkers(markers: polyEditor.edit()),
+        ],
       ),
       floatingActionButton: FloatingActionButton(
         child: const Icon(Icons.replay),

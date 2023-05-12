@@ -38,23 +38,21 @@ class _PolylinePageState extends State<PolylinePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text('Polyline example')),
-      body: Center(
-        child: FlutterMap(
-          options: MapOptions(
-            onTap: (_, ll) {
-              polyEditor.add(testPolyline.points, ll);
-            },
-            center: LatLng(45.5231, -122.6765),
-            zoom: 3.4,
-          ),
-          children: [
-            TileLayer(
-              urlTemplate: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
-            ),
-            PolylineLayer(polylines: polyLines),
-            DragMarkers(markers: polyEditor.edit()),
-          ],
+      body: FlutterMap(
+        options: MapOptions(
+          onTap: (_, ll) {
+            polyEditor.add(testPolyline.points, ll);
+          },
+          center: LatLng(45.5231, -122.6765),
+          zoom: 3.4,
         ),
+        children: [
+          TileLayer(
+            urlTemplate: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
+          ),
+          PolylineLayer(polylines: polyLines),
+          DragMarkers(markers: polyEditor.edit()),
+        ],
       ),
       floatingActionButton: FloatingActionButton(
         child: const Icon(Icons.replay),

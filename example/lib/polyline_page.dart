@@ -26,7 +26,7 @@ class _PolylinePageState extends State<PolylinePage> {
       pointIcon: const Icon(Icons.crop_square, size: 23),
       intermediateIcon: const Icon(Icons.lens, size: 15, color: Colors.grey),
       callbackRefresh: () {
-        debugPrint("polyedit setstate");
+        //debugPrint("polyedit setstate");
         setState(() {});
       },
     );
@@ -44,7 +44,7 @@ class _PolylinePageState extends State<PolylinePage> {
             polyEditor.add(testPolyline.points, ll);
           },
           center: LatLng(45.5231, -122.6765),
-          zoom: 3.4,
+          zoom: 10,
         ),
         children: [
           TileLayer(

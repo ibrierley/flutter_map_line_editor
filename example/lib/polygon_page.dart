@@ -47,7 +47,7 @@ class _PolygonPageState extends State<PolygonPage> {
             polyEditor.add(testPolygon.points, ll);
           },
           center: LatLng(45.5231, -122.6765),
-          zoom: 6.4,
+          zoom: 10,
         ),
         children: [
           TileLayer(

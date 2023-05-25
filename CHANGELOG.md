@@ -1,3 +1,6 @@
+##4.1.0
+-  Moving to use dragmarker package
+
 ##4.0.3
 -  Making compatible with flutter_map ^4.0.0
 

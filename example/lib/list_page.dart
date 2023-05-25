@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:flutter_map/plugin_api.dart';
-import 'package:flutter_map_line_editor/dragmarker.dart';
-import 'package:flutter_map_line_editor/polyeditor.dart';
+import 'package:flutter_map_dragmarker/flutter_map_dragmarker.dart';
+import 'package:flutter_map_line_editor/flutter_map_line_editor.dart';
 import 'package:latlong2/latlong.dart';
 
 class ListPage extends StatefulWidget {
@@ -15,8 +15,8 @@ class ListPage extends StatefulWidget {
 class _ListPageState extends State<ListPage> {
   late PolyEditor polyEditor;
 
-  List<Polyline> polyLines = [];
-  var testPolyline = Polyline(color: Colors.deepOrange, points: []);
+  final polyLines = <Polyline>[];
+  final testPolyline = Polyline(color: Colors.deepOrange, points: []);
 
   @override
   void initState() {
@@ -28,7 +28,7 @@ class _ListPageState extends State<ListPage> {
       pointIcon: const Icon(Icons.crop_square, size: 23),
       intermediateIcon: const Icon(Icons.lens, size: 15, color: Colors.grey),
       callbackRefresh: () {
-        debugPrint("polyedit setstate");
+        //debugPrint("polyedit setstate");
         setState(() {});
       },
     );
@@ -44,7 +44,7 @@ class _ListPageState extends State<ListPage> {
         child: ListView.builder(
           itemCount: 10,
           itemBuilder: (context, index) {
-            if (index == 4) {
+            if (index == 2) {
               return SizedBox(
                 height: 200,
                 child: Card(
@@ -54,13 +54,13 @@ class _ListPageState extends State<ListPage> {
                         polyEditor.add(testPolyline.points, ll);
                       },
                       center: LatLng(45.5231, -122.6765),
-                      zoom: 3.4,
+                      zoom: 10,
                     ),
                     children: [
                       TileLayer(
-                          urlTemplate:
-                              'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
-                          subdomains: const ['a', 'b', 'c']),
+                        urlTemplate:
+                            'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
+                      ),
                       PolylineLayer(polylines: polyLines),
                       DragMarkers(markers: polyEditor.edit()),
                     ],

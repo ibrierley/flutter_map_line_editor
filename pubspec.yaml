@@ -1,6 +1,6 @@
 name: flutter_map_line_editor
-description: Line editor class for flutter_map
-version: 4.1.0
+description: A basic Line and Polygon editor for `flutter_map` using drag markers
+version: 5.0.0
 repository: https://github.com/ibrierley/flutter_map_line_editor
 
 environment:

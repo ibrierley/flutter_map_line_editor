@@ -1,7 +1,7 @@
 name: example
 description: Example app showcasing usage of flutter_map_line_editor.
 publish_to: 'none'
-version: 4.1.0
+version: 5.0.0
 
 environment:
   sdk: ">=2.18.0 <4.0.0"
@@ -10,9 +10,9 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  flutter_map: ^4.0.0
-  flutter_map_dragmarker: ^4.1.3
-  latlong2: ">=0.8.0 <0.9.0"
+  flutter_map: ">=4.0.0 <6.0.0"
+  flutter_map_dragmarker: ">=4.0.0 <6.0.0"
+  latlong2: ">=0.8.0 <0.10.0"
   flutter_map_line_editor:
     path: ../
 

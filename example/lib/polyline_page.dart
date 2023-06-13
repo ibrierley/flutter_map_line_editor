@@ -43,6 +43,8 @@ class _PolylinePageState extends State<PolylinePage> {
           onTap: (_, ll) {
             polyEditor.add(testPolyline.points, ll);
           },
+          // For backwards compatibility with pre v5 don't use const
+          // ignore: prefer_const_constructors
           center: LatLng(45.5231, -122.6765),
           zoom: 10,
         ),

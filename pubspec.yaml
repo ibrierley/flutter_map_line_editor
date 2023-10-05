@@ -11,7 +11,8 @@ dependencies:
   flutter:
     sdk: flutter
   latlong2: ">=0.8.0 <0.10.0"
-  flutter_map_dragmarker: ">=4.0.0 <6.0.0"
+  flutter_map_dragmarker:
+    git: https://github.com/shrijanRegmi/flutter_map_dragmarker.git
 
 dev_dependencies:
   flutter_lints: ">=1.0.4"

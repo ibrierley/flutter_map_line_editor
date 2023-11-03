@@ -10,8 +10,11 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  flutter_map: ">=4.0.0 <6.0.0"
-  flutter_map_dragmarker: ">=4.0.0 <6.0.0"
+  flutter_map: ^6.0.0
+  flutter_map_dragmarker:
+    git: 
+      url: https://github.com/shrijanRegmi/flutter_map_dragmarker.git
+      ref: flutter_map_v6
   latlong2: ">=0.8.0 <0.10.0"
   flutter_map_line_editor:
     path: ../

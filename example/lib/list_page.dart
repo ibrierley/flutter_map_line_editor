@@ -26,7 +26,7 @@ class _ListPageState extends State<ListPage> {
       points: testPolyline.points,
       pointIcon: const Icon(Icons.crop_square, size: 23),
       intermediateIcon: const Icon(Icons.lens, size: 15, color: Colors.grey),
-      callbackRefresh: () {
+      callbackRefresh: (_) {
         //debugPrint("polyedit setstate");
         setState(() {});
       },

@@ -5,7 +5,7 @@ import 'package:flutter_map_line_editor/flutter_map_line_editor.dart';
 import 'package:latlong2/latlong.dart';
 
 class ListPage extends StatefulWidget {
-  const ListPage({Key? key}) : super(key: key);
+  const ListPage({super.key});
 
   @override
   State<ListPage> createState() => _ListPageState();
@@ -26,7 +26,7 @@ class _ListPageState extends State<ListPage> {
       points: testPolyline.points,
       pointIcon: const Icon(Icons.crop_square, size: 23),
       intermediateIcon: const Icon(Icons.lens, size: 15, color: Colors.grey),
-      callbackRefresh: (_) {
+      callbackRefresh: (LatLng? _) {
         //debugPrint("polyedit setstate");
         setState(() {});
       },

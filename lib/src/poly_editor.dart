@@ -30,7 +30,7 @@ class PolyEditor {
     callbackRefresh?.call(LatLng(point.latitude, point.longitude));
   }
 
-  List add(List<LatLng> pointsList, point) {
+  List add(List<LatLng> pointsList, LatLng point) {
     pointsList.add(point);
     callbackRefresh?.call(point);
     return pointsList;
@@ -38,7 +38,7 @@ class PolyEditor {
 
   LatLng remove(int index) {
     final point = points.removeAt(index);
-    callbackRefresh?.call(null);
+    callbackRefresh?.call(point);
     return point;
   }
 

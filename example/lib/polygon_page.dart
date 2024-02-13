@@ -5,7 +5,7 @@ import 'package:flutter_map_line_editor/flutter_map_line_editor.dart';
 import 'package:latlong2/latlong.dart';
 
 class PolygonPage extends StatefulWidget {
-  const PolygonPage({Key? key}) : super(key: key);
+  const PolygonPage({super.key});
 
   @override
   State<PolygonPage> createState() => _PolygonPageState();
@@ -30,7 +30,7 @@ class _PolygonPageState extends State<PolygonPage> {
       points: testPolygon.points,
       pointIcon: const Icon(Icons.crop_square, size: 23),
       intermediateIcon: const Icon(Icons.lens, size: 15, color: Colors.grey),
-      callbackRefresh: () => {setState(() {})},
+      callbackRefresh: (LatLng? _) => {setState(() {})},
     );
 
     polygons.add(testPolygon);

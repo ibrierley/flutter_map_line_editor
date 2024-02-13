@@ -8,7 +8,7 @@ class PolyEditor {
   final Size pointIconSize;
   final Widget? intermediateIcon;
   final Size intermediateIconSize;
-  final Function? callbackRefresh;
+  final void Function(LatLng? updatePoint)? callbackRefresh;
   final bool addClosePathMarker;
 
   PolyEditor({
@@ -27,18 +27,18 @@ class PolyEditor {
     if (_markerToUpdate != null) {
       points[_markerToUpdate!] = LatLng(point.latitude, point.longitude);
     }
-    callbackRefresh?.call();
+    callbackRefresh?.call(LatLng(point.latitude, point.longitude));
   }
 
-  List add(List<LatLng> pointsList, point) {
+  List add(List<LatLng> pointsList, LatLng point) {
     pointsList.add(point);
-    callbackRefresh?.call();
+    callbackRefresh?.call(point);
     return pointsList;
   }
 
   LatLng remove(int index) {
     final point = points.removeAt(index);
-    callbackRefresh?.call();
+    callbackRefresh?.call(point);
     return point;
   }
 

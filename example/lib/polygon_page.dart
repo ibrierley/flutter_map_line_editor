@@ -14,10 +14,10 @@ class PolygonPage extends StatefulWidget {
 class _PolygonPageState extends State<PolygonPage> {
   late PolyEditor polyEditor;
 
-  final polygons = <Polygon>[];
+  final polyPoints = <LatLng>[];
+
   final testPolygon = Polygon(
     color: Colors.deepOrange,
-    isFilled: true,
     points: [],
   );
 
@@ -27,17 +27,28 @@ class _PolygonPageState extends State<PolygonPage> {
 
     polyEditor = PolyEditor(
       addClosePathMarker: true,
-      points: testPolygon.points,
+      points: polyPoints,
       pointIcon: const Icon(Icons.crop_square, size: 23),
       intermediateIcon: const Icon(Icons.lens, size: 15, color: Colors.grey),
       callbackRefresh: (LatLng? _) => {setState(() {})},
     );
 
-    polygons.add(testPolygon);
   }
 
   @override
   Widget build(BuildContext context) {
+
+    final polygons = <Polygon>[];
+    final testPolygon = Polygon(
+      label: 'Label!',
+      color: Colors.deepOrange,
+      borderColor: Colors.red,
+      borderStrokeWidth: 4,
+      points: polyPoints,
+    );
+
+    polygons.add(testPolygon);
+
     return Scaffold(
       appBar: AppBar(title: const Text('Polygon example')),
       body: FlutterMap(

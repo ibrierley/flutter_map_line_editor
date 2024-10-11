@@ -1,6 +1,6 @@
 ## 7.0.0
 
-- Add support for `flutter_map` v5 and `flutter_map_dragmarker` v7
+- Add support for `flutter_map` v7 and `flutter_map_dragmarker` v7
 
 ## 5.0.0
 

@@ -10,12 +10,16 @@ class PolyEditor {
   final Size intermediateIconSize;
   final void Function(LatLng? updatePoint)? callbackRefresh;
   final bool addClosePathMarker;
+  final bool addLineStartMarker;
+  final bool addLineEndMarker;
 
   PolyEditor({
     required this.points,
     required this.pointIcon,
     this.intermediateIcon,
     this.callbackRefresh,
+    this.addLineStartMarker = false,
+    this.addLineEndMarker = false,
     this.addClosePathMarker = false,
     this.pointIconSize = const Size(30, 30),
     this.intermediateIconSize = const Size(30, 30),
@@ -45,7 +49,11 @@ class PolyEditor {
   List<DragMarker> edit() {
     List<DragMarker> dragMarkers = [];
 
-    for (var c = 0; c < points.length; c++) {
+    final startC = addLineStartMarker || addClosePathMarker ? 0 : 1;
+    final endC = addLineEndMarker || addClosePathMarker
+        ? points.length
+        : points.length - 1;
+    for (var c = startC; c < endC; c++) {
       final indexClosure = c;
       dragMarkers.add(DragMarker(
         point: points[c],

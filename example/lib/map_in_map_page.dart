@@ -13,32 +13,37 @@ class MapInMapPage extends StatefulWidget {
 
 class _MapinMapPageState extends State<MapInMapPage> {
   late PolyEditor polyEditor;
+
+  final polyPoints = <LatLng>[];
+
   final MapController mapController = MapController();
-  final polyLines = <Polyline>[];
-  final testPolyline = Polyline(color: Colors.deepOrange, points: []);
-  LatLng? currentPoint = const LatLng(45.5231, -122.6765);
 
   @override
   void initState() {
     polyEditor = PolyEditor(
       addClosePathMarker: false,
-      points: testPolyline.points,
+      points: polyPoints,
       pointIcon: const Icon(Icons.crop_square, size: 23),
       intermediateIcon: const Icon(Icons.lens, size: 15, color: Colors.grey),
       callbackRefresh: (LatLng? point) {
         //debugPrint("polyedit setstate");
         if (point != null) {
-          mapController.move(point, 16);
+          //mapController.move(point, 16);
         }
         setState(() {});
       },
     );
-    polyLines.add(testPolyline);
+
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
+
+    final polyLines = <Polyline>[];
+    final testPolyline = Polyline(color: Colors.deepOrange, points: polyPoints);
+    polyLines.add(testPolyline);
+
     return Scaffold(
       appBar: AppBar(title: const Text('Map in Map example')),
       body: Stack(

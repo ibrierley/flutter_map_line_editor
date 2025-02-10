@@ -14,8 +14,7 @@ class ListPage extends StatefulWidget {
 class _ListPageState extends State<ListPage> {
   late PolyEditor polyEditor;
 
-  final polyLines = <Polyline>[];
-  final testPolyline = Polyline(color: Colors.deepOrange, points: []);
+  final polyPoints = <LatLng>[];
 
   @override
   void initState() {
@@ -23,7 +22,7 @@ class _ListPageState extends State<ListPage> {
 
     polyEditor = PolyEditor(
       addClosePathMarker: false,
-      points: testPolyline.points,
+      points: polyPoints,
       pointIcon: const Icon(Icons.crop_square, size: 23),
       intermediateIcon: const Icon(Icons.lens, size: 15, color: Colors.grey),
       callbackRefresh: (LatLng? _) {
@@ -31,12 +30,15 @@ class _ListPageState extends State<ListPage> {
         setState(() {});
       },
     );
-
-    polyLines.add(testPolyline);
   }
 
   @override
   Widget build(BuildContext context) {
+
+    final polyLines = <Polyline>[];
+    final testPolyline = Polyline(color: Colors.deepOrange, points: polyPoints);
+    polyLines.add(testPolyline);
+
     return Scaffold(
       appBar: AppBar(title: const Text('List example')),
       body: Center(

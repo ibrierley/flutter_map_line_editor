@@ -14,14 +14,13 @@ class PolylinePage extends StatefulWidget {
 class _PolylinePageState extends State<PolylinePage> {
   late PolyEditor polyEditor;
 
-  final polyLines = <Polyline>[];
-  final testPolyline = Polyline(color: Colors.deepOrange, points: []);
+  final polyPoints = <LatLng>[];
 
   @override
   void initState() {
     polyEditor = PolyEditor(
       addClosePathMarker: false,
-      points: testPolyline.points,
+      points: polyPoints,
       pointIcon: const Icon(Icons.crop_square, size: 23),
       intermediateIcon: const Icon(Icons.lens, size: 15, color: Colors.grey),
       callbackRefresh: (LatLng? _) {
@@ -29,12 +28,17 @@ class _PolylinePageState extends State<PolylinePage> {
         setState(() {});
       },
     );
-    polyLines.add(testPolyline);
+
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
+
+    final polyLines = <Polyline>[];
+    final testPolyline = Polyline(color: Colors.deepOrange, points: polyPoints);
+    polyLines.add(testPolyline);
+
     return Scaffold(
       appBar: AppBar(title: const Text('Polyline example')),
       body: FlutterMap(

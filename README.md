@@ -51,6 +51,8 @@ var polyEditor = PolyEditor(
   intermediateIcon: Icon(Icons.lens, size: 15, color: Colors.grey),
   callbackRefresh: () => { this.setState(() {})},
   addClosePathMarker: false, // set to true if polygon
+  addLineStartMarker: true, // set to false, to remove first marker of line
+  addLineEndMarker: true, // set to false, to remove last marker of line
 );
 ```
 

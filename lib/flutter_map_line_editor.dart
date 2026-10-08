@@ -1,3 +1,3 @@
-library flutter_map_line_editor;
+library;
 
 export 'src/poly_editor.dart';

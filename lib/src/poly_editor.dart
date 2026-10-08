@@ -23,7 +23,7 @@ class PolyEditor {
 
   int? _markerToUpdate;
 
-  void updateMarker(details, point) {
+  void updateMarker(DragUpdateDetails details, LatLng point) {
     if (_markerToUpdate != null) {
       points[_markerToUpdate!] = LatLng(point.latitude, point.longitude);
     }

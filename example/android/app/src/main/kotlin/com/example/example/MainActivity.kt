@@ -1,6 +1,5 @@
-package com.github.ibrierley.flutter_map_line_editor
+package com.example.example
 
 import io.flutter.embedding.android.FlutterActivity
 
-class MainActivity: FlutterActivity() {
-}
+class MainActivity : FlutterActivity()
